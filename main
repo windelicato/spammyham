@@ -1,0 +1,18 @@
+#!/usr/bin/perl
+
+my $filename = $ARGV[0];
+undef($/); 
+open(EMAIL, $filename)
+	or die "Invalid file $filename\n";
+
+while(<EMAIL>){
+	(@words)=split(/\s+/);
+}
+close EMAIL;
+
+for (@words){
+	s/[^a-zA-Z\d]//g;
+	$words{$_}++;
+}
+
+print "@words";
