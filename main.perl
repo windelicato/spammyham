@@ -18,6 +18,7 @@ sub bayesian($){
 }
 
 sub readtxt($){
+	$filename = shift;
 	undef($/); 
 	open(EMAIL, $filename)
 		or die "Invalid file $filename\n";
