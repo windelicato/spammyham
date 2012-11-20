@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 # Bayesian library used under GNU General Public License
-# Library written by Gea-Suan Lin, <gslin at gslin.org>
 
 @email = readtxt($ARGV[0]);
 print bayesian(@email);
