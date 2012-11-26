@@ -11,33 +11,33 @@ my $output;
 
 sub bayesian($){
 	load_db();
-	foreach my $word (@email){
+	foreach my $word (@email){	# Check each word in email
 		my $s = 0, my $h=0;
-		if(exists $spam_hash{$word}){
+		if(exists $spam_hash{$word}){	# How many times is it in spam db?
 			$s = $spam_hash{$word};
 		}
-		if(exists $ham_hash{$word}){
+		if(exists $ham_hash{$word}){	# How many times is it in ham db?
 			$h = $ham_hash{$word};
 		}
 
-		$prob_hash{$word} = $s/($s+$h);	
+		$prob_hash{$word} = $s/($s+$h);	# Probability of words being spam
 	}
 
-	my $total = 0;
+	my $total = 0;			# Total probability = Average of all words 
 	for (keys %prob_hash) {
 		$total = $total + $prob_hash{$_};
 		print $_ , "\t" , "=>" , "\t", $prob_hash{$_}, "\n";
 	}
 
-	return $total / keys(%prob_hash);
+	return $total / keys(%prob_hash);	
 }
 
 sub load_db($){
 	my @spam=readtxt("spam.txt"); 
 	my @ham=readtxt("ham.txt"); 
 
-	foreach my $word (@spam){
-		$spam_hash{$word}++;
+	foreach my $word (@spam){	# Count occurances of each word in db
+		$spam_hash{$word}++;	# 	Key = word, Value = count
 	}
 
 	foreach my $word (@ham){
@@ -79,11 +79,13 @@ sub readtxt($){		# Function for reading words of file into array
 #################
 
 @email = readtxt($ARGV[0]);
-$output = bayesian(@email);
 
+
+$output = bayesian(@email);
 print "I've checked the email, and believe it is";
 if($output > 0.5) { print " SPAM";}
 else 		  { print "HAM";}
+print "With probability of " + $output + "\n";
 
 print "\n\nSend to spam box? Y(es)/N(o)/Q(uit)\n";
 my $choice = <STDIN>;
@@ -95,4 +97,5 @@ elsif($choice =~ /^[N]$/i) {
 	update_db("ham.txt");	
 }
 elsif($choice =~ /^[Q]?$/i) {
+	print "Goodbye!\n"
 }
