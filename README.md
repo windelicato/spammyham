@@ -3,5 +3,10 @@ spammyham
 
 Bayesian spam filter implementation in Perl
 
-Example algorithm Copyright 2010 Gea-Suan Lin.
-http://search.cpan.org/~gslin/Algorithm-Bayesian-0.5/lib/Algorithm/Bayesian.pm
+Usage:
+<pre><code>
+chmod +x main.perl
+./main.perl [EMAIL]
+</pre></code>
+
+Copyright 2012 Bill Indelicato, Bucknell University
