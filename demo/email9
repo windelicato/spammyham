@@ -1,0 +1,17 @@
+
+CSCI320-01-FA2012 -> Forums -> News forum -> Today's homework key updated
+---------------------------------------------------------------------
+Today's homework key updated
+by Josh Steinhurst - Wednesday, October  31, 2012, 09:39 PM
+---------------------------------------------------------------------
+As was pointed out by a student this evening, there is a gross error in =
+the
+answer key for today's homework. I have uploaded a new answer key.
+basically, I fell for exactly the trap laid byt he textbook author, the
+question wants to build a 512KB memory not a 512Kbit memory which you
+would get with 8 chips - conviently the number you need ganged together to
+provide the required 32-bit word length. The result is needing what is
+logically 8 rows of 8 chips or 64.
+
+Thanks Elaina!
+Josh
